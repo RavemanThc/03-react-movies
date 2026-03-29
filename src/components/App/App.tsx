@@ -15,7 +15,6 @@ export default function App() {
   const [isError, setIsError] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
 
-  // 🔍 пошук фільмів
   const handleSearch = async (query: string) => {
     try {
       setIsLoading(true);
@@ -38,12 +37,10 @@ export default function App() {
     }
   };
 
-  // 🎬 клік по фільму
   const handleSelectMovie = (movie: Movie) => {
     setSelectedMovie(movie);
   };
 
-  // ❌ закриття модалки
   const handleCloseModal = () => {
     setSelectedMovie(null);
   };

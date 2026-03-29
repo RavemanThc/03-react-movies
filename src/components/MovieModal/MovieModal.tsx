@@ -1,15 +1,8 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import css from "./MovieModal.module.css";
+import type { Movie } from "../../types/movie";
 
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  backdrop_path: string | null;
-  release_date: string;
-  vote_average: number;
-}
 
 interface MovieModalProps {
   movie: Movie;
@@ -17,7 +10,7 @@ interface MovieModalProps {
 }
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
-  // блокування скролу body
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
 
@@ -35,14 +28,14 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
     };
   }, [onClose]);
 
-  // клік по бекдропу
+
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  // портал у body
+  
   return createPortal(
     <div
       className={css.backdrop}
